@@ -1,0 +1,491 @@
+junction,day_type,day_multiplier
+17th Mn 1st Crs Aishwarya Stores Jn,Weekday,1.0
+27th Cross Jayanagar(Ganapathi Temple),Weekday,1.0
+28thMainJayanagarJunc,Weekday,1.0
+29thMainRdBTM LayoutJunc,Weekday,1.6
+29thMainRdBTM LayoutJunc,Weekend,0.5
+5thMainHSR,Weekday,1.0
+5thMainRPC Layout-Vijayanagar,Weekday,1.0
+A S CharStreet-MysoreRdJunc,Weekday,1.2
+A S CharStreet-MysoreRdJunc,Weekend,0.8
+ASC Junction,Weekday,1.3333333333333333
+ASC Junction,Weekend,0.6666666666666666
+AdugodiJunc,Weekday,1.0
+AdugodiJunc,Weekend,1.0
+AgaraJunction,Weekday,1.0
+AnandRaoJunction,Weekday,1.1428571428571428
+AnandRaoJunction,Weekend,0.8571428571428571
+AnepalyaJunc,Weekday,1.6
+AnepalyaJunc,Weekend,0.5
+AnilKumbleCircle,Weekday,1.0
+AnilKumbleCircle,Weekend,1.0
+AnjaneyaTempleJunc,Weekday,1.3333333333333333
+AnjaneyaTempleJunc,Weekend,0.6666666666666666
+ArakereGateJunc,Weekday,1.7333333333333334
+ArakereGateJunc,Weekend,0.5
+Arbindo Circle,Weekday,1.8
+Arbindo Circle,Weekend,0.5
+Arts&CraftsCircle,Weekday,1.0
+AshirwadamCircle,Weekday,0.8
+AshirwadamCircle,Weekend,1.2
+Ashoknagar Junction(ShoolayCircle),Weekday,1.6666666666666667
+Ashoknagar Junction(ShoolayCircle),Weekend,0.5
+AttiguppeCircleJunction,Weekday,1.0
+AyyappaTempleJunc,Weekday,0.5
+AyyappaTempleJunc,Weekend,1.7142857142857142
+BDA Junctio-Koramangala,Weekday,0.5
+BDA Junctio-Koramangala,Weekend,1.6666666666666667
+BEL Circle,Weekday,0.96
+BEL Circle,Weekend,1.04
+BEML GateJunc(SuranjandasRd),Weekday,1.0
+BEML GateJunc(SuranjandasRd),Weekend,1.0
+BHEL Gate,Weekend,1.0
+BM ShriJunc(CMH-100FtRd)Junc,Weekday,1.3333333333333333
+BM ShriJunc(CMH-100FtRd)Junc,Weekend,0.6666666666666666
+BMTCJunction-K H Road,Weekday,1.7777777777777777
+BMTCJunction-K H Road,Weekend,0.5
+BTM16thMain-ORR Junc,Weekday,1.0
+BTM16thMain-ORR Junc,Weekend,1.0
+BagalakunteCrossJunction,Weekday,1.0
+BagalakunteCrossJunction,Weekend,1.0
+BagalurCrossJunc,Weekday,1.1851851851851851
+BagalurCrossJunc,Weekend,0.8148148148148148
+Bamboobazar(Shivajinagar),Weekday,1.0
+BanashankariBusStandJunc,Weekday,1.6363636363636365
+BanashankariBusStandJunc,Weekend,0.5
+BangaloreBodyBuildersJunc,Weekday,1.368421052631579
+BangaloreBodyBuildersJunc,Weekend,0.631578947368421
+Basappa Circle Junction,Weekday,1.0
+BasavamantapaJunc-Dr RajkumarRd,Weekday,1.0
+BasavamantapaJunc-Dr RajkumarRd,Weekend,1.0
+BasaweshwaraCircle,Weekday,1.0
+Basveshwarnagar 8th main Junction,Weekday,1.0
+Batrayanapura(Amrutahalli)Junction,Weekday,1.4285714285714286
+Batrayanapura(Amrutahalli)Junction,Weekend,0.5714285714285714
+BegumMahalJunc,Weekday,1.0
+"Bellandur Junction, Outer ring road",Weekday,1.3333333333333333
+"Bellandur Junction, Outer ring road",Weekend,0.6666666666666666
+BhadrappaLayout,Weekday,1.0
+BhashyamCircle,Weekday,0.6666666666666666
+BhashyamCircle,Weekend,1.3333333333333333
+BhashyamCircle-SadashivNagar,Weekday,1.5
+BhashyamCircle-SadashivNagar,Weekend,0.5
+BigBazaar(Whitefield)Junc,Weekday,1.75
+BigBazaar(Whitefield)Junc,Weekend,0.5
+BigBazaarJunction(OldMadrasRd),Weekday,1.4615384615384615
+BigBazaarJunction(OldMadrasRd),Weekend,0.5384615384615384
+BilekahalliJunc,Weekday,1.7142857142857142
+BilekahalliJunc,Weekend,0.5
+BinnyMillJunction,Weekday,1.0
+BiryandCircle,Weekday,1.0
+BloodBankCircle,Weekday,1.7333333333333334
+BloodBankCircle,Weekend,0.5
+Bommanahalli,Weekday,1.2307692307692308
+Bommanahalli,Weekend,0.7692307692307693
+BrigadeMillenium,Weekday,1.0
+BucheryJunction,Weekday,1.4545454545454546
+BucheryJunction,Weekend,0.5454545454545454
+CID-CarltonHouseJunc,Weekday,1.7777777777777777
+CID-CarltonHouseJunc,Weekend,0.5
+CIL CrossJunction-JayamahalRd,Weekday,1.5
+CIL CrossJunction-JayamahalRd,Weekend,0.5
+CMH Rd-AdarshTheaterJunc,Weekday,1.0
+CMP GateJunc,Weekday,1.6
+CMP GateJunc,Weekend,0.5
+CashPharmacyJunction,Weekday,1.0
+ChandraLayoutJunc-nearWaterTank,Weekday,1.0
+ChandraLayoutJunc-nearWaterTank,Weekend,1.0
+ChandrikaJunction,Weekday,1.0
+ChandrikaJunction,Weekend,1.0
+ChaudrayaCircle/UdayaTVCircle(CantonmentJunc),Weekday,1.7142857142857142
+ChaudrayaCircle/UdayaTVCircle(CantonmentJunc),Weekend,0.5
+Chokasandra (Tumkur road),Weekday,1.4285714285714286
+Chokasandra (Tumkur road),Weekend,0.5714285714285714
+CholurpalyaJunction(MagadiRd),Weekday,1.0
+CholurpalyaJunction(MagadiRd),Weekend,1.0
+CoffeeBoardJunc,Weekday,1.5
+CoffeeBoardJunc,Weekend,0.5
+ColesParkJunc,Weekday,1.0
+CommandoHospitalJunc,Weekday,1.3333333333333333
+CommandoHospitalJunc,Weekend,0.6666666666666666
+D'SouzaCircle,Weekday,1.0
+DMRoadJunc(Basavangudi),Weekday,1.0
+DairyCircle,Weekday,1.0
+Delmia-Jayanagar,Weekday,0.6666666666666666
+Delmia-Jayanagar,Weekend,1.3333333333333333
+Devanahalli new bus stand,Weekday,1.0
+DevanahalliCrossJunc,Weekday,1.0
+DevangaHostelJunction,Weekday,1.6
+DevangaHostelJunction,Weekend,0.5
+Devasandra(k r puram),Weekday,1.8
+Devasandra(k r puram),Weekend,0.5
+DevegowdaPetrolBunkJunc,Weekday,1.0
+Deverabeesanahalli-ORR Junc,Weekday,1.6
+Deverabeesanahalli-ORR Junc,Weekend,0.5
+DhobiGhatJunc,Weekday,1.0
+DickensonRd-AdigasJunc,Weekend,1.0
+DoddaballapuraCrossJunc,Weekday,1.0
+DomlurWaterTank,Weekday,1.8333333333333333
+DomlurWaterTank,Weekend,0.5
+Dr RajkumarRd-10thCrossRdJunc,Weekday,1.6
+Dr RajkumarRd-10thCrossRdJunc,Weekend,0.5
+Dr TCM RoyanRd near AmbedkarStatue,Weekday,1.6363636363636365
+Dr TCM RoyanRd near AmbedkarStatue,Weekend,0.5
+ESI(k r puram),Weekday,1.0
+ElectronicCityGate-2Junc,Weekday,1.6666666666666667
+ElectronicCityGate-2Junc,Weekend,0.5
+EliteJunc,Weekday,1.3333333333333333
+EliteJunc,Weekend,0.6666666666666666
+FTI Junction(KanteeravaStudio),Weekday,1.8181818181818181
+FTI Junction(KanteeravaStudio),Weekend,0.5
+Fire Force Junction,Weekday,1.0
+Fire Force Junction,Weekend,1.0
+GangammagudiJunc,Weekday,1.6666666666666667
+GangammagudiJunc,Weekend,0.5
+GarebhavipalyaJunc,Weekday,1.6
+GarebhavipalyaJunc,Weekend,0.5
+Geeta Circle,Weekday,1.0
+Geethanjali jn,Weekday,1.0
+GokuldasImagesJunc,Weekday,1.1428571428571428
+GokuldasImagesJunc,Weekend,0.8571428571428571
+GopalGowdaJUnc,Weekday,1.0
+GorappanapalyaJunction,Weekday,1.0
+GoruguntepalyaJunc,Weekday,1.6
+GoruguntepalyaJunc,Weekend,0.5
+GovindapuraCross,Weekday,1.0
+GowdanapalyaJunction,Weekday,1.0
+HSR14thMainJunc,Weekday,1.3333333333333333
+HSR14thMainJunc,Weekend,0.6666666666666666
+HainsJunc,Weekday,1.6666666666666667
+HainsJunc,Weekend,0.5
+HalliThindi,Weekday,1.0
+HebbalFlyoverJunc,Weekday,1.4285714285714286
+HebbalFlyoverJunc,Weekend,0.5714285714285714
+HennurRd-DavisRdJunction,Weekday,1.0
+HennurRd-DavisRdJunction,Weekend,1.0
+HennurRoad-ORR Junc,Weekday,1.5294117647058822
+HennurRoad-ORR Junc,Weekend,0.5
+HesaraghattaJunction,Weekday,1.6
+HesaraghattaJunction,Weekend,0.5
+HoodiJunction,Weekday,1.0
+HopefarmJunction,Weekday,1.8
+HopefarmJunction,Weekend,0.5
+HoramavuJunction,Weekday,0.6666666666666666
+HoramavuJunction,Weekend,1.3333333333333333
+HosmatJunction,Weekday,0.6666666666666666
+HosmatJunction,Weekend,1.3333333333333333
+HudsonCircle,Weekday,1.3333333333333333
+HudsonCircle,Weekend,0.6666666666666666
+HulimaveRd-BanneraghattaRdJunc,Weekday,1.5555555555555556
+HulimaveRd-BanneraghattaRdJunc,Weekend,0.5
+HunsemarammanahalliJunction,Weekday,1.7142857142857142
+HunsemarammanahalliJunction,Weekend,0.5
+ISRO Junction-Airport rd,Weekday,1.1111111111111112
+ISRO Junction-Airport rd,Weekend,0.8888888888888888
+ISRO Junction-NewBEL Rd,Weekday,1.0
+IbblurJunction',Weekday,1.2307692307692308
+IbblurJunction',Weekend,0.7692307692307693
+IndianExpressJunction,Weekday,0.875
+IndianExpressJunction,Weekend,1.125
+Indiranasgar13thMainJunc,Weekend,1.0
+ItmaduJunction,Weekday,1.0
+J D MaraJunc,Weekday,1.3333333333333333
+J D MaraJunc,Weekend,0.6666666666666666
+JP Nagar 15th cross junction,Weekday,1.4285714285714286
+JP Nagar 15th cross junction,Weekend,0.5714285714285714
+JP Nagar 9th cross-24th main jn,Weekday,1.2
+JP Nagar 9th cross-24th main jn,Weekend,0.8
+JaiMuniRaoCircle,Weekday,1.6
+JaiMuniRaoCircle,Weekend,0.5
+Jaipuria-Adugodi,Weekday,1.0
+JakkurCrossJunction,Weekday,1.4444444444444444
+JakkurCrossJunction,Weekend,0.5555555555555556
+JalahalliCross(SM Circle),Weekday,1.6875
+JalahalliCross(SM Circle),Weekend,0.5
+JayadevaHospitalJunc,Weekday,1.5
+JayadevaHospitalJunc,Weekend,0.5
+"Jayanagar 4th main,36th cross",Weekday,1.0
+"Jayanagar 4th main,36th cross",Weekend,1.0
+JohnsonMarket,Weekday,0.6666666666666666
+JohnsonMarket,Weekend,1.3333333333333333
+K G Junction,Weekday,1.0
+K H Road-SiddaiahRdJunc(BMTC-BigBazaar),Weekday,1.3333333333333333
+K H Road-SiddaiahRdJunc(BMTC-BigBazaar),Weekend,0.6666666666666666
+K R Circle,Weekday,1.4666666666666666
+K R Circle,Weekend,0.5333333333333333
+K R MarketJunction,Weekday,1.4285714285714286
+K R MarketJunction,Weekend,0.5714285714285714
+KCG HospitalJunction,Weekday,1.0
+KCG HospitalJunction,Weekend,1.0
+KHB Junction,Weekday,1.0
+KIMCO Junction,Weekday,1.4838709677419355
+KIMCO Junction,Weekend,0.5161290322580645
+KR Road-14thCross Junc,Weekend,1.0
+KadirenahalliJunction,Weekday,1.25
+KadirenahalliJunction,Weekend,0.75
+Kadubeesanahalli-ORR Junc,Weekday,1.3333333333333333
+Kadubeesanahalli-ORR Junc,Weekend,0.6666666666666666
+KalyanNagar-ORR Junc,Weekday,1.0
+KamakyaJunction,Weekday,1.0
+Kammanahalli-RingRoadJunction,Weekday,1.5
+Kammanahalli-RingRoadJunction,Weekend,0.5
+KamrajRdJunction,Weekday,1.6
+KamrajRdJunction,Weekend,0.5
+KanakapuraRd-RingRdJunction,Weekday,1.5
+KanakapuraRd-RingRdJunction,Weekend,0.5
+KarnatakaBhavanJunction,Weekday,0.5
+KarnatakaBhavanJunction,Weekend,1.5
+KatriguppeJunction,Weekday,1.6666666666666667
+KatriguppeJunction,Weekend,0.5
+KensingtonOvalJunc,Weekend,1.0
+KhodaysCircle(DV UrsCircle),Weekday,1.826086956521739
+KhodaysCircle(DV UrsCircle),Weekend,0.5
+KodigehalliCross,Weekday,1.4545454545454546
+KodigehalliCross,Weekend,0.5454545454545454
+KogilluCrossJunc,Weekday,1.8666666666666667
+KogilluCrossJunc,Weekend,0.5
+KonanakunteJunction(KanakapurarRd),Weekday,0.6666666666666666
+KonanakunteJunction(KanakapurarRd),Weekend,1.3333333333333333
+KoramangalaWaterTankJunc,Weekday,1.5862068965517242
+KoramangalaWaterTankJunc,Weekend,0.5
+KrishnaFlourMill,Weekday,1.411764705882353
+KrishnaFlourMill,Weekend,0.5882352941176471
+Krupanidhi College,Weekday,0.5
+Krupanidhi College,Weekend,1.6
+Kudlu Gate Junc,Weekday,1.6666666666666667
+Kudlu Gate Junc,Weekend,0.5
+KundanahalliGateJunc,Weekday,1.6
+KundanahalliGateJunc,Weekend,0.5
+KuvempuCircle,Weekday,0.6666666666666666
+KuvempuCircle,Weekend,1.3333333333333333
+"KuvempuCircleJunc,HAL MainGate",Weekday,1.0
+LRDE Junction,Weekday,1.3333333333333333
+LRDE Junction,Weekend,0.6666666666666666
+LalbaghMainGateJunc,Weekday,1.0
+LalbaghWestGate,Weekday,1.0
+LeprosyhospitalJunc,Weekday,1.5
+LeprosyhospitalJunc,Weekend,0.5
+LinkRoadMalleswaramJunc,Weekday,1.0
+LowerAgaram(IndiaGarage)Junc,Weekday,1.3333333333333333
+LowerAgaram(IndiaGarage)Junc,Weekend,0.6666666666666666
+MC Circle,Weekday,1.0
+MICO Bande,Weekday,1.0
+MICO Bande,Weekend,1.0
+MS RamaiahJunc(TollGate),Weekday,1.0909090909090908
+MS RamaiahJunc(TollGate),Weekend,0.9090909090909091
+MSRamaiahHospitalJunc,Weekday,1.0
+MahalaxmiLayoutEntranceJunc,Weekday,1.6
+MahalaxmiLayoutEntranceJunc,Weekend,0.5
+MaharajaJunction,Weekday,1.0
+Malleswaram18thCrossRd-SampigeRdJunc,Weekday,1.0
+ManipalCentreJunc,Weekday,1.0
+MaratahalliBridgeJunc,Weekday,1.875
+MaratahalliBridgeJunc,Weekend,0.5
+MarenahalliRd-18thMainRdJunc,Weekday,1.0
+MargosaRd-18thCrossJunc,Weekday,1.6666666666666667
+MargosaRd-18thCrossJunc,Weekend,0.5
+Marigowda-TavarkereRdJunc,Weekday,1.2307692307692308
+Marigowda-TavarkereRdJunc,Weekend,0.7692307692307693
+MayohallJunction,Weekday,1.0
+MeenakshiMallJunc,Weekday,1.25
+MeenakshiMallJunc,Weekend,0.75
+MekhriCircle,Weekday,1.4375
+MekhriCircle,Weekend,0.5625
+MillCornerRd-SampigeRdJunc,Weekday,1.0
+Minerva Circle,Weekday,1.0
+MinskSquare(CTO Junction),Weekday,1.75
+MinskSquare(CTO Junction),Weekend,0.5
+MintoJunction,Weekday,1.2
+MintoJunction,Weekend,0.8
+ModiBridgeJunction,Weekday,1.3333333333333333
+ModiBridgeJunction,Weekend,0.6666666666666666
+ModiHospital,Weekday,1.0
+MotherTeressaCircle,Weekday,1.4545454545454546
+MotherTeressaCircle,Weekend,0.5454545454545454
+MysoreRd--MadhuPetrolBunkJunction,Weekday,1.5
+MysoreRd--MadhuPetrolBunkJunction,Weekend,0.5
+MysoreRd-RingRdJunc(Nayandanahallii),Weekday,1.5555555555555556
+MysoreRd-RingRdJunc(Nayandanahallii),Weekend,0.5
+N R SquareJunc,Weekday,1.4
+N R SquareJunc,Weekend,0.6
+NCERT Junction,Weekday,1.0
+NGV RearGateJunc,Weekday,1.0
+NIMHANS Junction,Weekday,1.3333333333333333
+NIMHANS Junction,Weekend,0.6666666666666666
+NTTF JunctionPeenya,Weekday,1.0
+NTTF JunctionPeenya,Weekend,1.0
+NagaTheaterJunc-Ulsoor,Weekday,1.0
+NaganathapuraJunction,Weekday,1.8333333333333333
+NaganathapuraJunction,Weekend,0.5
+Nagarbhavi,Weekday,1.5555555555555556
+Nagarbhavi,Weekend,0.5
+Nagavara-ORR Junction,Weekday,1.6
+Nagavara-ORR Junction,Weekend,0.5
+NandiCross(RaniCross),Weekday,0.6666666666666666
+NandiCross(RaniCross),Weekend,1.3333333333333333
+"Narayanapura cross, Hegde nagar",Weekday,1.3333333333333333
+"Narayanapura cross, Hegde nagar",Weekend,0.6666666666666666
+NationalCollege,Weekday,1.0
+NavarangBarJunc-Dr RajkumarRd,Weekday,1.0
+NavarangTheatreJunction,Weekend,1.0
+OldMadrasRd-80FeetRdJunc,Weekday,1.0
+OldMadrasRd-BMTC DepotJunc,Weekday,1.0
+OldMadrasRd-DoubleRdJunc,Weekday,1.3333333333333333
+OldMadrasRd-DoubleRdJunc,Weekend,0.6666666666666666
+OldMadrasRd-Indranagar100ftRdJunc,Weekday,1.6666666666666667
+OldMadrasRd-Indranagar100ftRdJunc,Weekend,0.5
+OldMadrasRd-NGEF Junc,Weekday,1.25
+OldMadrasRd-NGEF Junc,Weekend,0.75
+OldMadrasRd-SuddaguntepalyaRdJunc,Weekday,0.6666666666666666
+OldMadrasRd-SuddaguntepalyaRdJunc,Weekend,1.3333333333333333
+OldPoliceStation-Ashoknagar,Weekday,1.2
+OldPoliceStation-Ashoknagar,Weekend,0.8
+OperaHouseJunc,Weekday,1.3333333333333333
+OperaHouseJunc,Weekend,0.6666666666666666
+PES-DevegowdaCircle,Weekday,1.5
+PES-DevegowdaCircle,Weekend,0.5
+Peenya14thCrossJunc,Weekday,1.0
+Peenya2ndStageBusStand,Weekday,1.0
+Peenya2ndStageBusStand,Weekend,1.0
+PeenyaPoliceStation,Weekday,1.8333333333333333
+PeenyaPoliceStation,Weekend,0.5
+PlatformRdJunction,Weekday,1.6
+PlatformRdJunction,Weekend,0.5
+PoliceCornerJunc,Weekday,1.6153846153846154
+PoliceCornerJunc,Weekend,0.5
+PoliceTimmaiahCircle(GPO),Weekday,1.5714285714285714
+PoliceTimmaiahCircle(GPO),Weekend,0.5
+PotteryCircle,Weekday,1.0
+PrasannaJunction,Weekday,1.6666666666666667
+PrasannaJunction,Weekend,0.5
+"PriyadarshiniHotel,Jayamahal,RT Nagar",Weekday,0.8
+"PriyadarshiniHotel,Jayamahal,RT Nagar",Weekend,1.2
+PurnimaTheaterJunc,Weekday,1.7142857142857142
+PurnimaTheaterJunc,Weekend,0.5
+PuttammaChoultryNagarbhavi,Weekday,1.0
+PuttammaChoultryNagarbhavi,Weekend,1.0
+QueensStatueCircle,Weekday,1.7142857142857142
+QueensStatueCircle,Weekend,0.5
+RRR(Okalipuram)Junction,Weekday,1.0
+Rajajinagagr1stBlockJunction,Weekday,1.0
+Rajajinagagr1stBlockJunction,Weekend,1.0
+Rajajinagar19thMainJunc,Weekday,1.3333333333333333
+Rajajinagar19thMainJunc,Weekend,0.6666666666666666
+RajajinagarEntranceJunction,Weekday,1.2
+RajajinagarEntranceJunction,Weekend,0.8
+RajarajeshwariKalyanaMantapaJunc,Weekday,1.0
+RajeshwariJunc,Weekday,1.3636363636363635
+RajeshwariJunc,Weekend,0.6363636363636364
+RamaiahCircle-UlsoorPoliceStation,Weekday,1.5555555555555556
+RamaiahCircle-UlsoorPoliceStation,Weekend,0.5
+RamamurthyNagarJunction,Weekday,1.3333333333333333
+RamamurthyNagarJunction,Weekend,0.6666666666666666
+Richmond circle jn,Weekday,1.7777777777777777
+Richmond circle jn,Weekend,0.5
+Ring road-Near Kengunte Junction,Weekday,1.1428571428571428
+Ring road-Near Kengunte Junction,Weekend,0.8571428571428571
+RingRoad-UllalJunction,Weekday,1.1428571428571428
+RingRoad-UllalJunction,Weekend,0.8571428571428571
+RoyanCircle-Chamrajpete,Weekend,1.0
+SRS Peenya Junc,Weekday,1.0
+SRS Peenya Junc,Weekend,1.0
+SadahalliGateJunc(AirportRd),Weekday,1.4285714285714286
+SadahalliGateJunc(AirportRd),Weekend,0.5714285714285714
+SadashivnagarJunc,Weekday,1.2307692307692308
+SadashivnagarJunc,Weekend,0.7692307692307693
+SafinaPlazaJunc,Weekday,1.0
+SagarHospitalJunc,Weekday,1.6
+SagarHospitalJunc,Weekend,0.5
+SagarTheatreJunc,Weekday,1.6
+SagarTheatreJunc,Weekend,0.5
+SandeepUnnikrishnan-Yelhanka,Weekday,1.5
+SandeepUnnikrishnan-Yelhanka,Weekend,0.5
+SantheCircle,Weekday,1.12
+SantheCircle,Weekend,0.88
+SarjapurRd-St JohnsRdJunc,Weekday,0.5
+SarjapurRd-St JohnsRdJunc,Weekend,1.6
+SatteliteBusStandJunc,Weekday,1.3953488372093024
+SatteliteBusStandJunc,Weekend,0.6046511627906976
+ShankarMuttCircle,Weekday,1.0
+ShantalaJunction,Weekday,1.4666666666666666
+ShantalaJunction,Weekend,0.5333333333333333
+ShivajiTalkiesJunc,Weekday,1.1428571428571428
+ShivajiTalkiesJunc,Weekend,0.8571428571428571
+Shivajinagar(BRV)Junction,Weekday,1.125
+Shivajinagar(BRV)Junction,Weekend,0.875
+ShivanahalliJunctionWOC,Weekday,1.0
+ShivandaCircle,Weekday,1.6666666666666667
+ShivandaCircle,Weekend,0.5
+Shivashankara circle,Weekday,1.0
+SiddalingaiahCircle,Weekday,1.0
+SiddapuraJunction,Weekday,1.2
+SiddapuraJunction,Weekend,0.8
+SilkBoardJunc,Weekday,1.3333333333333333
+SilkBoardJunc,Weekend,0.6666666666666666
+SindhiColonyJunction,Weekday,1.0
+SirsiCircle,Weekday,1.7777777777777777
+SirsiCircle,Weekend,0.5
+SonyworldJunction,Weekday,1.0
+South end circle,Weekday,1.3333333333333333
+South end circle,Weekend,0.6666666666666666
+Srigandakaval,Weekday,1.7142857142857142
+Srigandakaval,Weekend,0.5
+Srinivagilu(Ejipura)Junc,Weekday,1.5
+Srinivagilu(Ejipura)Junc,Weekend,0.5
+StateBankofMysoreJunc,Weekday,1.1666666666666667
+StateBankofMysoreJunc,Weekend,0.8333333333333334
+SubbannaJunction,Weekday,1.7142857142857142
+SubbannaJunction,Weekend,0.5
+SubedarChatramRd near SheshadripuramPS,Weekday,1.6666666666666667
+SubedarChatramRd near SheshadripuramPS,Weekend,0.5
+Sumanhalli,Weekday,1.625
+Sumanhalli,Weekend,0.5
+SwagathMainRd-EastEndRdJunc,Weekday,1.0
+TC Palya-OM RoadJunc,Weekday,1.0
+TVS CrossJunction,Weekday,1.0
+TamarikannanJunc,Weekday,1.0
+TataInstituteCircle,Weekday,1.1666666666666667
+TataInstituteCircle,Weekend,0.8333333333333334
+ThomasCafe-New,Weekday,1.0
+TownhallJunction,Weekday,1.4666666666666666
+TownhallJunction,Weekend,0.5333333333333333
+"Trilight Circle,Race course Road",Weekday,1.0
+TrinityCircle,Weekday,1.0909090909090908
+TrinityCircle,Weekend,0.9090909090909091
+TumkurRdMarappanapalyaJunc,Weekday,1.4285714285714286
+TumkurRdMarappanapalyaJunc,Weekend,0.5714285714285714
+TyagiHengalvarayaJunc(DickensonRd),Weekday,0.8
+TyagiHengalvarayaJunc(DickensonRd),Weekend,1.2
+UCO Bank(Forum),Weekday,1.0
+UlsoorGateJunc,Weekday,1.6666666666666667
+UlsoorGateJunc,Weekend,0.5
+UniversityJunc(Janabharti),Weekday,1.5
+UniversityJunc(Janabharti),Weekend,0.5
+UpparpetJunction,Weekday,1.0
+UrvashiJunction,Weekday,1.3333333333333333
+UrvashiJunction,Weekend,0.6666666666666666
+UttarahalliJunction,Weekday,1.5714285714285714
+UttarahalliJunction,Weekend,0.5
+"VeerannapalyaJunction(BEL,HO)",Weekday,1.6
+"VeerannapalyaJunction(BEL,HO)",Weekend,0.5
+VeerasandraGateJunction,Weekday,1.0
+VetenaryHospitalJunc-Shivajinagar,Weekday,1.5
+VetenaryHospitalJunc-Shivajinagar,Weekend,0.5
+VijayanagarBusStandJunction,Weekday,1.0
+WebbsCircle,Weekday,1.3333333333333333
+WebbsCircle,Weekend,0.6666666666666666
+WilsonGarden10thCrossJunc,Weekday,1.6666666666666667
+WilsonGarden10thCrossJunc,Weekend,0.5
+WilsonGarden12thCrossJunc,Weekday,1.5
+WilsonGarden12thCrossJunc,Weekend,0.5
+WiproJunc-Koramangala,Weekday,1.0
+YediyurMeternityHospital,Weekend,1.0
+YelhankaBypass,Weekday,1.263157894736842
+YelhankaBypass,Weekend,0.7368421052631579
+YelhankaCircle,Weekday,1.2352941176470589
+YelhankaCircle,Weekend,0.7647058823529411
+Yemalur cross junc,Weekday,1.0
+YeshwanthpuraCircle,Weekday,1.4736842105263157
+YeshwanthpuraCircle,Weekend,0.5263157894736842
+toll gate mysore road,Weekday,1.5151515151515151
+toll gate mysore road,Weekend,0.5
