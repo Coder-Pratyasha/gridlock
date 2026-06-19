@@ -46,7 +46,7 @@ with col1:
             use_container_width=True,
             type="primary"
         ):
-            st.switch_page("pages/plan_event.py")
+            st.switch_page("pages/1_Plan_Event.py")
 
 with col2:
     with st.container(border=True):
