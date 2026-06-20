@@ -73,6 +73,22 @@ Machine Learning model predicts:
 based on historical event records.
 
 ---
+### 🛣 Traffic Diversion Recommendation
+
+Generates alternative traffic routes when an event is expected to impact normal traffic flow.
+
+The system:
+
+- Identifies affected junctions
+- Blocks disrupted route segments
+- Uses graph-based path search to find alternate routes
+- Ranks diversion paths using historical congestion patterns
+
+Outputs:
+
+- Recommended Diversion Routes
+- Alternative Junctions
+- Route Health Scores
 
 ### 👮 Officer Allocation Recommendation
 
@@ -90,6 +106,16 @@ Outputs:
 - Resource Allocation Insights
 
 ---
+### 🚓 Dynamic Police Resource Allocation
+
+Allocates traffic personnel from nearby police stations based on:
+
+- Officer Availability
+- Station Capacity
+- Event Severity
+- Location Proximity
+
+Helps optimize resource utilization across multiple events.
 
 ### 📍 Junction Impact Analysis
 
@@ -190,7 +216,57 @@ FlowGuard-AI/
 
 ---
 
-## 🤖 Machine Learning Components
+## 🤖 Machine Learning & Intelligence Components
+
+### Congestion Risk Assessment Engine
+
+Calculates:
+
+- Event Congestion Score
+- Traffic Impact Level
+- Event Risk Category
+
+using:
+
+- Event Type
+- Event Duration
+- Day Type (Weekday / Weekend)
+- Historical Event Patterns
+- Road Closure Information
+- Event Priority
+- Temporal Characteristics
+
+Outputs:
+
+- Congestion Score
+- Risk Level
+- Traffic Impact Assessment
+
+---
+
+### Junction Risk Intelligence
+
+Analyzes affected junctions and computes:
+
+- Junction Risk Score
+- Congestion Probability
+- Traffic Pressure Level
+
+using:
+
+- Historical Junction Activity
+- Event Congestion Score
+- Day Type
+- Event Duration
+- Nearby Traffic Patterns
+
+Outputs:
+
+- Junction Ranking
+- Risk Categorization
+- Affected Junction Analysis
+
+---
 
 ### Event Duration Prediction Model
 
@@ -209,20 +285,27 @@ using:
 
 ---
 
-### Officer Requirement Estimation
+### Resource Allocation Engine
 
-Predicts:
+Estimates:
 
 - Required Traffic Officers
+- Traffic Management Resources
 
 using:
 
-- Event Characteristics
-- Congestion Scores
+- Event Congestion Score
+- Junction Risk Statistics
 - Historical Deployments
-- Junction Load Statistics
+- Event Characteristics
+- Affected Junction Analysis
 
----
+Outputs:
+
+- Recommended Officer Count
+- Resource Allocation Insights
+  
+  ---
 
 ## 📊 Dataset Features
 
@@ -248,6 +331,9 @@ Additional engineered features:
 - Event Duration
 - Day Type
 - Hour of Day
+- Event Congestion Score
+- Junction Risk Score
+- Affected Junction Count
 - Junction Statistics
 - Historical Congestion Indicators
 
@@ -306,6 +392,8 @@ FlowGuard AI helps authorities:
 - Optimize officer deployment
 - Enhance public safety
 - Improve emergency response readiness
+- Support data-driven traffic management
+- Improve resource utilization efficiency
 
 ---
 
