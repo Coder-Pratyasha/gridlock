@@ -125,3 +125,23 @@ with st.container(border=True):
 
 🟢 **Airport Corridor** — Operating normally
 """)
+    
+st.divider()
+
+st.subheader("Upcoming Events")
+
+with st.container(border=True):
+    st.markdown("""
+1. Billi ards Championship — 2024-06-15, 18:00, City Sports Arena
+2. Music Festival — 2024-06-20, 16:00, Central Park
+""")
+    
+st.divider()
+
+st.subheader("Live Events")
+
+with st.container(border=True):
+    st.markdown("""
+1. Marathon — 2024-06-10, 07:00p.m. Downtown Streets
+2. Sunny Music Concert — 2024-06-12, 19:00, Riverside Park
+""")
