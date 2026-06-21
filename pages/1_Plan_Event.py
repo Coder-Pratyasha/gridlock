@@ -147,7 +147,7 @@ if event_type in route_based_events:
                 with st.spinner("Traversing city adjacency graph to compute bypass corridor..."):
                     is_wknd = pd.to_datetime(event_date).dayofweek >= 5
                     hr_val = event_time.hour
-                    detour = engine.get_route_diversions(st.session_state.route_path, hr_val, is_wknd)
+                    detour = engine.get_route_diversions(st.session_state.route_path, hr_val, is_wknd, active_event_type=event_type)
                     
                     if detour['status'] == 'success':
                         st.success(f"✅ **Continuous Bypass Route Secured!** (Avg Path Health: {detour['avg_health']:.2f})")
