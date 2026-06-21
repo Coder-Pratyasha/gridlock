@@ -124,7 +124,8 @@ if event_type in route_based_events:
                 "event_time": str(event_time),
                 "attendance": expected_attendance,
                 "route": [all_nodes_dict[n] for n in st.session_state.route_path],
-                "status": "planned"
+                "status": "planned",
+                "divergence_required": False
             }
             save_event(payload)
             st.success("✅ Event saved successfully.")
@@ -139,7 +140,8 @@ if event_type in route_based_events:
                     "event_time": str(event_time),
                     "attendance": expected_attendance,
                     "route": [all_nodes_dict[n] for n in st.session_state.route_path],
-                    "status": "planned"
+                    "status": "planned",
+                    "divergence_required": True
                 }
                 save_event(payload)
 
@@ -213,7 +215,8 @@ else:
                 "event_time": str(event_time),
                 "attendance": expected_attendance,
                 "event_location": all_nodes_dict[event_location],
-                "status": "planned"
+                "status": "planned",
+                "divergence_required": bool(div_assessment['requires_divergence'])
             }
             save_event(payload)
             st.success("✅ Event saved successfully.")
@@ -228,7 +231,8 @@ else:
                 "attendance": expected_attendance,
                 "event_location": all_nodes_dict[event_location],
                 "status": "planned",
-                "ai_divergence_score": div_assessment['score']
+                "ai_divergence_score": div_assessment['score'],
+                "divergence_required": bool(div_assessment['requires_divergence'])
             }
             save_event(payload)
             

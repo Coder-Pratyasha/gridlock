@@ -2,12 +2,14 @@
     {
         "event_id": 1,
         "event_name": "Delhi Marathon",
-        "event_type": "Marathon"
+        "event_type": "Marathon",
+        "divergence_required": false
     },
     {
         "event_id": 2,
         "event_name": "Music Festival",
-        "event_type": "Concert"
+        "event_type": "Concert",
+        "divergence_required": false
     },
     {
         "id": "20260620231649",
@@ -16,7 +18,8 @@
         "event_time": "23:16:00",
         "attendance": 22,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
-        "status": "planned"
+        "status": "planned",
+        "divergence_required": false
     },
     {
         "id": "20260620231755",
@@ -25,7 +28,8 @@
         "event_time": "23:17:00",
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
-        "status": "planned"
+        "status": "planned",
+        "divergence_required": false
     },
     {
         "id": "20260620233821",
@@ -34,7 +38,8 @@
         "event_time": "23:38:00",
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
-        "status": "planned"
+        "status": "planned",
+        "divergence_required": false
     },
     {
         "id": "20260620233822",
@@ -43,7 +48,8 @@
         "event_time": "23:38:00",
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
-        "status": "planned"
+        "status": "planned",
+        "divergence_required": false
     },
     {
         "id": "20260620233952",
@@ -52,6 +58,20 @@
         "event_time": "23:39:00",
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
-        "status": "planned"
+        "status": "planned",
+        "divergence_required": false
+    },
+    {
+        "id": "20260621131349",
+        "event_type": "sports_event",
+        "event_date": "2026-06-21",
+        "event_time": "13:13:00",
+        "attendance": 0,
+        "route": [
+            "AnepalyaJunc, Hosur Road, Central Zone 1",
+            "AdugodiJunc, Hosur Road, South Zone 2"
+        ],
+        "status": "planned",
+        "divergence_required": true
     }
 ]
