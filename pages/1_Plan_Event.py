@@ -5,6 +5,8 @@ from datetime import datetime
 
 from modules.routing_engine import RoutingEngine
 from modules.divergence_scorer import calculate_divergence_requirement
+from modules.calculate_officers import calculate_officers
+from modules.refresh_officer_count import refresh_officer_availability
 from modules.events_store import append_event
 from modules.calculate_officers import calculate_officers
 
@@ -146,12 +148,8 @@ if event_type in route_based_events:
             st.success("✅ Event saved successfully.")
 
     with diversion_col:
-        if st.button(
-            "🚧 Generate Diversion Plan",
-            type="primary",
-            use_container_width=True
-        ):
-
+        if st.button("🚧 Generate Diversion Plan", type="primary", use_container_width=True):
+            refresh_officer_availability(current_time=f"{event_date} {event_time}")
             if len(st.session_state.route_path) > 1:
 
                 payload = {
@@ -180,19 +178,28 @@ if event_type in route_based_events:
                     )
 
                     hr_val = event_time.hour
+                    detour = engine.get_route_diversions(st.session_state.route_path, hr_val, is_wknd, active_event_type=event_type)
+                    
+                    if detour['status'] == 'success':
+                        diversion_junctions = [
+                                node["junction"].replace(" ", "")
+                                for node in detour["path"]
+                            ]
+                        st.session_state["diversion_junctions"] = diversion_junctions
+                        st.session_state["detour_generated"] = True
+                        st.session_state["event_type"] = event_type
+                        st.session_state["hour"] = hr_val
+                        st.session_state["start_time"] = f"{event_date} {event_time}"
+                        st.session_state["day_type"] = "Weekend" if is_wknd else "Weekday"
+                        st.success(f"✅ **Continuous Bypass Route Secured!** (Avg Path Health: {detour['avg_health']:.2f})")
+                        with st.container(border=True):
+                            st.markdown("### 🗺️ Recommended Bypass Stream")
+                            for idx, step in enumerate(detour['path']):
+                                if idx == 0: st.write(f"🏁 **Divert From:** {step['junction']} ({step['corridor']})")
+                                elif idx == len(detour['path']) - 1: st.write(f"🏁 **Rejoin At:** {step['junction']} ({step['corridor']})")
+                                else: st.write(f" ↪️ **Detour Via:** {step['junction']} *(Health: {step['health']:.2f})*")
+                        st.divider()
 
-                    detour = engine.get_route_diversions(
-                        st.session_state.route_path,
-                        hr_val,
-                        is_wknd,
-                        active_event_type=event_type
-                    )
-
-                    if detour["status"] == "success":
-                        st.success(
-                            f"✅ **Continuous Bypass Route Secured!** "
-                            f"(Avg Path Health: {detour['avg_health']:.2f})"
-                        )
                     else:
                         st.warning(
                             "⚠️ Graph Disconnect."
@@ -200,13 +207,55 @@ if event_type in route_based_events:
 
                 with st.expander("⚙️ View JSON Payload"):
                     st.json(payload)
-
             else:
-                st.warning(
+                 st.warning(
                     "You must build an active segment matrix "
                     "(at least 2 nodes) before evaluating "
                     "pipeline deployment."
                 )
+                
+            
+    if st.session_state.get("detour_generated", False):
+
+        if st.button(
+            "👮 Generate Deployment Plan",
+            use_container_width=True,
+            key="route_deployment"
+        ):
+            st.session_state["show_route_deployment"] = True
+
+    if st.session_state.get("show_route_deployment", False):
+
+        st.subheader("👮 Police Deployment Plan")
+
+        for junction in st.session_state["diversion_junctions"]:
+
+            result = calculate_officers(
+                junction_name=junction,
+                event_type=st.session_state["event_type"],
+                day_type=st.session_state["day_type"],
+                hour=st.session_state["hour"],
+                start_time=st.session_state["start_time"]
+            )
+
+            with st.container(border=True):
+
+                st.markdown(
+                    f"### 🚦 {result['junction']}"
+                )
+
+                st.write(
+                    f"Required Officers: {result['officers_required']}"
+                )
+
+                for alloc in result["allocations"]:
+
+                    st.success(
+                        f"🚔 {alloc['station_name']} → "
+                        f"{alloc['officers_allocated']} officers "
+                        f"(Workload: {alloc['workload_percent']}%)"
+                    )
+            
 
 else:
     # --- SINGLE POINT EVENT ---
@@ -309,6 +358,7 @@ else:
 
     with diversion_col:
         if st.button("🚧 Generate Diversion Plan", type="primary", use_container_width=True):
+            refresh_officer_availability(current_time=f"{event_date} {event_time}")
             payload = {
                 "id": datetime.now().strftime("%Y%m%d%H%M%S"),
                 "event_type": event_type,
@@ -347,5 +397,59 @@ else:
                         st.warning("No alternative routes found within the spatial constraints.")
 
             st.success("Stationary Event processed successfully.")
+            st.session_state["single_point_ready"] = True
+            st.session_state["single_junction"] = raw_junction_name
+            st.session_state["single_event_type"] = event_type
+            st.session_state["single_day_type"] = "Weekend" if is_wknd else "Weekday"
+            st.session_state["single_hour"] = hr_val
+            st.session_state["single_start_time"] = f"{event_date} {event_time}"
+            st.divider()
+
+            
+                        
             with st.expander("⚙️ View JSON Payload"):
                 st.json(payload)
+    
+    if st.session_state.get("single_point_ready", False):
+
+        if st.button(
+            "👮 Generate Deployment Plan",
+            use_container_width=True,
+            key="single_point_deployment"
+        ):
+            st.session_state["show_single_deployment"] = True
+
+    if st.session_state.get("show_single_deployment", False):
+
+        try:
+            result = calculate_officers(
+                junction_name=st.session_state["single_junction"],
+                event_type=st.session_state["single_event_type"],
+                day_type=st.session_state["single_day_type"],
+                hour=st.session_state["single_hour"],
+                start_time=st.session_state["single_start_time"]
+            )
+
+            st.subheader("👮 Police Deployment Plan")
+
+            with st.container(border=True):
+
+                st.markdown(
+                    f"### 🚦 {result['junction']}"
+                )
+
+                st.write(
+                    f"Required Officers: {result['officers_required']}"
+                )
+
+                for alloc in result["allocations"]:
+
+                    st.success(
+                        f"🚔 {alloc['station_name']} → "
+                        f"{alloc['officers_allocated']} officers "
+                        f"(Workload: {alloc['workload_percent']}%)"
+                    )
+
+        except Exception as e:
+            st.error(str(e))
+                

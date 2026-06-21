@@ -2,6 +2,21 @@ import pandas as pd
 from geopy.distance import geodesic
 from datetime import timedelta
 
+junction_scores_df = pd.read_csv(
+    "datasets/junction_scores.csv"
+)
+
+junction_day_df = pd.read_csv(
+    "datasets/junction_daytype_multipliers.csv"
+)
+
+junction_hour_df = pd.read_csv(
+    "datasets/junction_hour_multipliers.csv"
+)
+
+event_df = pd.read_csv(
+    "datasets/event_congestion_scores.csv"
+)
 
 def allocate_station_resources(
     junction_name,
@@ -222,11 +237,7 @@ def calculate_officers(
     event_type,
     day_type,
     hour,
-    start_time,
-    junction_scores_df,
-    junction_day_df,
-    junction_hour_df,
-    event_df
+    start_time
 ):
 
     # Base Junction Score
@@ -236,7 +247,11 @@ def calculate_officers(
     ]
 
     if junction_match.empty:
-        return 0
+        return {
+            "junction": junction_name,
+            "officers_required": 0,
+            "allocations": []
+        }
 
     base_score = junction_scores_df.loc[
         junction_scores_df["junction"] == junction_name,
