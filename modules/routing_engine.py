@@ -15,22 +15,27 @@ class RoutingEngine:
             raise FileNotFoundError(f"Dataset not found at: {data_path}")
         
         self.df = pd.read_csv(data_path)
+        
+        # --- 1. NEW: Load Static Risk Dataframes ---
+        self.j_scores_df = pd.read_csv("datasets/junction_scores.csv")
+        self.e_scores_df = pd.read_csv("datasets/event_congestion_scores.csv")
+        
         self._prepare_nodes()
         self._build_adjacency()
 
     def _prepare_nodes(self):
-        # 1. Clean spacing tokens
+        # Clean spacing tokens
         for col in ['zone', 'corridor', 'junction']:
             self.df[col] = self.df[col].astype(str).str.strip().str.replace(' ', '_')
             
-        # 2. Extract valid coordinates and calculate median centers
+        # Extract valid coordinates and calculate median centers
         valid_coords = self.df[(self.df['latitude'] != 0) & (self.df['longitude'] != 0)].dropna(subset=['latitude', 'longitude'])
         self.unique_nodes = valid_coords.groupby(['zone', 'corridor', 'junction']).agg({
             'latitude': 'median',
             'longitude': 'median'
         }).reset_index()
         
-        # 3. Create Unique Keys
+        # Create Unique Keys
         self.unique_nodes['node_id'] = self.unique_nodes['zone'] + "_" + self.unique_nodes['corridor'] + "_" + self.unique_nodes['junction']
         
         # Merge back to original df and setup temporal features
@@ -39,11 +44,11 @@ class RoutingEngine:
         self.df['hour'] = self.df['start_datetime'].dt.hour
         self.df['is_weekend'] = self.df['start_datetime'].dt.dayofweek >= 5
 
-        # 4. Initialize Spatial Indexes for rapid math
+        # Initialize Spatial Indexes for rapid math
         self.gdf_nodes = gpd.GeoDataFrame(self.unique_nodes, geometry=gpd.points_from_xy(self.unique_nodes.longitude, self.unique_nodes.latitude), crs="EPSG:4326")
         self.gdf_metric = self.gdf_nodes.to_crs(epsg=32643)
 
-        # 5. Fast Lookup Dictionary
+        # Fast Lookup Dictionary
         self.node_lookup = self.unique_nodes.set_index('node_id')[['junction', 'corridor', 'zone']].to_dict(orient='index')
 
     def _map_gps(self, lat, lon):
@@ -102,7 +107,7 @@ class RoutingEngine:
         }
         
     def get_single_point_diversions(self, node_id, hr, is_wknd):
-        """Calculates 500m-2km radius health scores for stationary isolated hazards."""
+        """Calculates 500m-2km radius health scores blending live incidents and junction risk."""
         node_data = self.unique_nodes[self.unique_nodes['node_id'] == node_id].iloc[0]
         event_point = gpd.GeoSeries([Point(node_data['longitude'], node_data['latitude'])], crs="EPSG:4326").to_crs(epsg=32643).iloc[0]
         
@@ -112,6 +117,7 @@ class RoutingEngine:
         logical = cands[cands['corridor'] == node_data['corridor']].copy()
         if logical.empty: logical = cands.copy()
         
+        # Pull Live Incident Counts
         hist = self.df[(self.df['hour'] == hr) & (self.df['is_weekend'] == is_wknd)]
         counts = hist['node_id'].value_counts().reset_index()
         counts.columns = ['node_id', 'count']
@@ -119,13 +125,25 @@ class RoutingEngine:
         logical = logical.drop_duplicates(subset=['junction'])
         res = pd.merge(logical, counts, on='node_id', how='left')
         res['count'] = res['count'].fillna(0)
-        res['health'] = 1 / (1 + res['count'])
+        
+        # --- 2. NEW: Incorporate Junction Static Risk Scores ---
+        res['clean_junc_key'] = res['junction'].str.replace('_', '')
+        self.j_scores_df['clean_junc_key'] = self.j_scores_df['junction'].str.replace('_', '')
+        
+        res = pd.merge(res, self.j_scores_df[['clean_junc_key', 'risk_score']], on='clean_junc_key', how='left')
+        res['risk_score'] = res['risk_score'].fillna(res['risk_score'].median()) # Safe fallback
+        
+        # Hybrid Predictive Health Score Formula
+        # Penalty = (70% weight on active incidents) + (30% weight on base junction risk index)
+        res['health'] = 1 / (1 + (res['count'] * 0.70) + ((res['risk_score'] / 100.0) * 0.30))
+        
         return res.sort_values(by='health', ascending=False).reset_index(drop=True)
 
-    def get_route_diversions(self, route_path, hr, is_wknd):
+    # --- 3. NEW: Add active_event_type parameter for Multi-Point Routing ---
+    def get_route_diversions(self, route_path, hr, is_wknd, active_event_type="others"):
         """
         Uses Breadth-First Search (BFS) to find an alternate path from start to end,
-        explicitly blocking all intermediate nodes of the planned event route.
+        explicitly blocking intermediate nodes, scoring edges by cumulative risk matrices.
         """
         from collections import deque
 
@@ -134,8 +152,6 @@ class RoutingEngine:
 
         start_node = route_path[0]
         end_node = route_path[-1]
-
-        # Block all intermediate nodes so the algorithm is forced to bypass the event
         blocked_nodes = set(route_path[1:-1])
 
         # BFS Setup: Queue holds (current_node, path_history)
@@ -146,44 +162,54 @@ class RoutingEngine:
         while queue:
             current, path = queue.popleft()
 
-            # Target reached
             if current == end_node:
-                # If the user only selected 2 nodes (A->B), we must avoid the direct A->B edge 
-                # so we can find a true detour (A->C->B).
                 if len(path) > 2 or (len(path) == 2 and len(route_path) > 2): 
                      alternate_path = path
                      break
 
-            # Explore Valid Neighbors
             for neighbor in self.adj_graph.get(current, []):
                 if neighbor not in visited and neighbor not in blocked_nodes:
-                    # Skip the direct blocked edge if it's a 2-node event route
                     if current == start_node and neighbor == end_node and len(route_path) == 2:
                         continue 
-                    
                     visited.add(neighbor)
                     queue.append((neighbor, path + [neighbor]))
 
         if alternate_path:
-            # Build healthy score payload for the successful detour
+            # Pull historical count tracking dictionaries
             hist = self.df[(self.df['hour'] == hr) & (self.df['is_weekend'] == is_wknd)]
             counts = hist['node_id'].value_counts().to_dict()
             
+            # --- NEW: Match the current active event multiplier weight ---
+            e_match = self.e_scores_df[self.e_scores_df["event_cause"].str.lower() == active_event_type.lower()]
+            event_severity = e_match.iloc[0]["event_congestion_score"] if not e_match.empty else 50.0
+            
             path_details = []
-            total_incidents = 0
+            total_penalty = 0
+            
+            # Clean up the local index structure for quick access
+            j_risk_lookup = self.j_scores_df.set_index(self.j_scores_df['junction'].str.replace('_', '').str.lower())['risk_score'].to_dict()
+            
             for nid in alternate_path:
-                c = counts.get(nid, 0)
-                total_incidents += c
+                c_incidents = counts.get(nid, 0)
+                
+                # Fetch static junction structure metrics
+                j_clean = self.node_lookup[nid]['junction'].replace('_', '').lower()
+                base_junc_risk = j_risk_lookup.get(j_clean, 35.0) # default fallback median
+                
+                # Dynamic Edge Penalty Score Formula
+                # Combines live constraints with base corridor vulnerability and global event intensity
+                node_penalty = (c_incidents * 0.50) + ((base_junc_risk / 100.0) * 0.30) + ((event_severity / 100.0) * 0.20)
+                total_penalty += node_penalty
+                
                 path_details.append({
                     'junction': self.node_lookup[nid]['junction'].replace('_', ' '),
                     'corridor': self.node_lookup[nid]['corridor'].replace('_', ' '),
-                    'health': 1 / (1 + c)
+                    'health': 1 / (1 + node_penalty)
                 })
             
-            # Average Health of the new path
-            avg_health = 1 / (1 + (total_incidents / len(alternate_path)))
+            # Average Health across the completed BFS graph route
+            avg_health = 1 / (1 + (total_penalty / len(alternate_path)))
             return {"status": "success", "path": path_details, "avg_health": avg_health}
         else:
-            # Fallback if no continuous graph path exists (network is disconnected)
             fallback = self.get_single_point_diversions(start_node, hr, is_wknd).head(3)
             return {"status": "fallback", "nodes": fallback}
