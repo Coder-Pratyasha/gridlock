@@ -6,6 +6,7 @@ from datetime import datetime
 from modules.routing_engine import RoutingEngine
 from modules.divergence_scorer import calculate_divergence_requirement
 from modules.events_store import append_event
+from modules.calculate_officers import calculate_officers
 
 st.set_page_config(page_title="Plan Event", page_icon="📅", layout="wide")
 
@@ -17,12 +18,37 @@ def get_engine():
 # Cache the scoring CSVs
 @st.cache_data
 def load_scoring_data():
-    e_scores = pd.read_csv("datasets/event_congestion_scores.csv")
-    j_scores = pd.read_csv("datasets/junction_scores.csv")
-    return e_scores, j_scores
+    e_scores = pd.read_csv(
+        "datasets/event_congestion_scores.csv"
+    )
+
+    j_scores = pd.read_csv(
+        "datasets/junction_scores.csv"
+    )
+
+    junction_day_df = pd.read_csv(
+        "datasets/junction_daytype_multipliers.csv"
+    )
+
+    junction_hour_df = pd.read_csv(
+        "datasets/junction_hour_multipliers.csv"
+    )
+
+    return (
+        e_scores,
+        j_scores,
+        junction_day_df,
+        junction_hour_df
+    )
 
 engine = get_engine()
-e_scores, j_scores = load_scoring_data()
+
+(
+    e_scores,
+    j_scores,
+    junction_day_df,
+    junction_hour_df
+) = load_scoring_data()
 
 def save_event(event_data):
     append_event(event_data)
@@ -104,6 +130,7 @@ if event_type in route_based_events:
 
     with save_col:
         if st.button("💾 Save Event", use_container_width=True):
+
             payload = {
                 "id": datetime.now().strftime("%Y%m%d%H%M%S"),
                 "event_type": event_type,
@@ -114,12 +141,19 @@ if event_type in route_based_events:
                 "status": "planned",
                 "divergence": False
             }
+
             save_event(payload)
             st.success("✅ Event saved successfully.")
 
     with diversion_col:
-        if st.button("🚧 Generate Diversion Plan", type="primary", use_container_width=True):
+        if st.button(
+            "🚧 Generate Diversion Plan",
+            type="primary",
+            use_container_width=True
+        ):
+
             if len(st.session_state.route_path) > 1:
+
                 payload = {
                     "id": datetime.now().strftime("%Y%m%d%H%M%S"),
                     "event_type": event_type,
@@ -130,32 +164,49 @@ if event_type in route_based_events:
                     "status": "planned",
                     "divergence": True
                 }
+
                 save_event(payload)
 
-                st.subheader("🤖 FlowGuard AI Route Detour Generation")
-                with st.spinner("Traversing city adjacency graph to compute bypass corridor..."):
-                    is_wknd = pd.to_datetime(event_date).dayofweek >= 5
+                st.subheader(
+                    "🤖 FlowGuard AI Route Detour Generation"
+                )
+
+                with st.spinner(
+                    "Traversing city adjacency graph to compute bypass corridor..."
+                ):
+
+                    is_wknd = (
+                        pd.to_datetime(event_date).dayofweek >= 5
+                    )
+
                     hr_val = event_time.hour
-                    detour = engine.get_route_diversions(st.session_state.route_path, hr_val, is_wknd, active_event_type=event_type)
-                    
-                    if detour['status'] == 'success':
-                        st.success(f"✅ **Continuous Bypass Route Secured!** (Avg Path Health: {detour['avg_health']:.2f})")
-                        with st.container(border=True):
-                            st.markdown("### 🗺️ Recommended Bypass Stream")
-                            for idx, step in enumerate(detour['path']):
-                                if idx == 0: st.write(f"🏁 **Divert From:** {step['junction']} ({step['corridor']})")
-                                elif idx == len(detour['path']) - 1: st.write(f"🏁 **Rejoin At:** {step['junction']} ({step['corridor']})")
-                                else: st.write(f" ↪️ **Detour Via:** {step['junction']} *(Health: {step['health']:.2f})*")
+
+                    detour = engine.get_route_diversions(
+                        st.session_state.route_path,
+                        hr_val,
+                        is_wknd,
+                        active_event_type=event_type
+                    )
+
+                    if detour["status"] == "success":
+                        st.success(
+                            f"✅ **Continuous Bypass Route Secured!** "
+                            f"(Avg Path Health: {detour['avg_health']:.2f})"
+                        )
                     else:
-                        st.warning("⚠️ **Graph Disconnect:** Could not find a continuous alternate path avoiding the blocked zone in the historical dataset.")
-                        st.info("Here are the clearest standalone fallback junctions near the origin:")
-                        for idx, row in detour['nodes'].iterrows():
-                            st.write(f"👉 **{row['junction'].replace('_', ' ')}** *(Score: {row['health']:.2f})*")
-                
+                        st.warning(
+                            "⚠️ Graph Disconnect."
+                        )
+
                 with st.expander("⚙️ View JSON Payload"):
                     st.json(payload)
+
             else:
-                st.warning("You must build an active segment matrix (at least 2 nodes) before evaluating pipeline deployment.")
+                st.warning(
+                    "You must build an active segment matrix "
+                    "(at least 2 nodes) before evaluating "
+                    "pipeline deployment."
+                )
 
 else:
     # --- SINGLE POINT EVENT ---
@@ -195,6 +246,25 @@ else:
 
     with save_col:
         if st.button("💾 Save Event", use_container_width=True):
+
+            day_type = (
+                "Weekend"
+                if pd.to_datetime(event_date).dayofweek >= 5
+                else "Weekday"
+            )
+
+            prediction = calculate_officers(
+                junction_name=raw_junction_name,
+                event_type=event_type,
+                day_type=day_type,
+                hour=event_time.hour,
+                start_time=f"{event_date} {event_time}",
+                junction_scores_df=j_scores,
+                junction_day_df=junction_day_df,
+                junction_hour_df=junction_hour_df,
+                event_df=e_scores
+            )
+
             payload = {
                 "id": datetime.now().strftime("%Y%m%d%H%M%S"),
                 "event_type": event_type,
@@ -203,10 +273,39 @@ else:
                 "attendance": expected_attendance,
                 "event_location": all_nodes_dict[event_location],
                 "status": "planned",
-                "divergence": bool(div_assessment['requires_divergence'])
+                "divergence": bool(div_assessment['requires_divergence']),
+                "deployment_prediction": {
+                    "junction": prediction["junction"],
+                    "predicted_officers": prediction["officers_required"]
+                }
             }
+
             save_event(payload)
-            st.success("✅ Event saved successfully.")
+
+            st.success(
+    f"""
+✅ Event saved successfully
+
+🤖 AI Predicted Officers: {prediction['officers_required']}
+
+📈 Future predictions will improve through post-event feedback.
+"""
+)
+            
+    # with save_col:
+    #     if st.button("💾 Save Event", use_container_width=True):
+    #         payload = {
+    #             "id": datetime.now().strftime("%Y%m%d%H%M%S"),
+    #             "event_type": event_type,
+    #             "event_date": str(event_date),
+    #             "event_time": str(event_time),
+    #             "attendance": expected_attendance,
+    #             "event_location": all_nodes_dict[event_location],
+    #             "status": "planned",
+    #             "divergence": bool(div_assessment['requires_divergence'])
+    #         }
+    #         save_event(payload)
+    #         st.success("✅ Event saved successfully.")
 
     with diversion_col:
         if st.button("🚧 Generate Diversion Plan", type="primary", use_container_width=True):

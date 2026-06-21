@@ -8,9 +8,9 @@ def allocate_station_resources(
     officers_required,
     start_time,
     duration_hours,
-    mapping_file="junction_to_stations.csv",
-    resources_file="police_station_resources.csv",
-    deployments_file="police_deployments.csv"
+    mapping_file="datasets/junction_to_stations.csv",
+    resources_file="datasets/police_station_resources.csv",
+    deployments_file="datasets/police_deployments.csv"
 ):
 
     mapping_df = pd.read_csv(mapping_file)
