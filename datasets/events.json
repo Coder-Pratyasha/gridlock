@@ -3,13 +3,13 @@
         "event_id": 1,
         "event_name": "Delhi Marathon",
         "event_type": "Marathon",
-        "divergence_required": false
+        "divergence": false
     },
     {
         "event_id": 2,
         "event_name": "Music Festival",
         "event_type": "Concert",
-        "divergence_required": false
+        "divergence": false
     },
     {
         "id": "20260620231649",
@@ -19,7 +19,7 @@
         "attendance": 22,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
         "status": "planned",
-        "divergence_required": false
+        "divergence": false
     },
     {
         "id": "20260620231755",
@@ -29,7 +29,7 @@
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
         "status": "planned",
-        "divergence_required": false
+        "divergence": false
     },
     {
         "id": "20260620233821",
@@ -39,7 +39,7 @@
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
         "status": "planned",
-        "divergence_required": false
+        "divergence": false
     },
     {
         "id": "20260620233822",
@@ -49,7 +49,7 @@
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
         "status": "planned",
-        "divergence_required": false
+        "divergence": false
     },
     {
         "id": "20260620233952",
@@ -59,7 +59,7 @@
         "attendance": 0,
         "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
         "status": "planned",
-        "divergence_required": false
+        "divergence": false
     },
     {
         "id": "20260621131349",
@@ -72,6 +72,22 @@
             "AdugodiJunc, Hosur Road, South Zone 2"
         ],
         "status": "planned",
-        "divergence_required": true
+        "divergence": true
+    },
+    {
+        "id": "20260621132542",
+        "event_type": "tree_fall",
+        "event_date": "2026-06-21",
+        "event_time": "13:25:00",
+        "attendance": 0,
+        "event_location": "AnepalyaJunc, Hosur Road, Central Zone 1",
+        "status": "completed",
+        "ai_divergence_score": 31.8,
+        "divergence": true,
+        "feedback": {
+            "rating": 4,
+            "notes": "",
+            "submitted_at": "2026-06-21T13:41:29"
+        }
     }
 ]
