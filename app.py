@@ -147,29 +147,15 @@ st.divider()
 
 st.subheader("Operations")
 
-col1, col2 = st.columns(2)
-
-with col1:
-    with st.container(border=True):
-        st.markdown("### 📅 Plan Event")
-        st.caption("Forecast congestion and pre-plan deployments.")
-        if st.button(
-            "Launch Planner",
-            use_container_width=True,
-            type="primary"
-        ):
-            st.switch_page("pages/1_Plan_Event.py")
-
-with col2:
-    with st.container(border=True):
-        st.markdown("### 🚨 Report Incident")
-        st.caption("Generate real-time response recommendations.")
-        if st.button(
-            "Open Incident Desk",
-            use_container_width=True,
-            type="primary"
-        ):
-            st.switch_page("pages/2_Report_Event.py")
+with st.container(border=True):
+    st.markdown("### � Report Event")
+    st.caption("Forecast congestion and pre-plan deployments.")
+    if st.button(
+        "Open Report",
+        use_container_width=True,
+        type="primary"
+    ):
+        st.switch_page("pages/1_Report_Event.py")
 
 st.divider()
 data = events_document if isinstance(events_document, dict) else {}
@@ -215,19 +201,6 @@ st_folium(
 
 # st.markdown(map_placeholder, unsafe_allow_html=True)
 
-st.divider()
-
-st.subheader("Recent Alerts")
-
-with st.container(border=True):
-    st.markdown("""
-🔴 **MG Road Junction** — Severe congestion expected
-
-🟠 **Queens Circle** — Diversion recommended
-
-🟢 **Airport Corridor** — Operating normally
-""")
-    
 st.divider()
 
 st.subheader("Upcoming Events")

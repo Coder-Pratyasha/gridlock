@@ -1,1 +1,34 @@
-
+{
+    "event": {
+        "name": "City Event",
+        "type": "General",
+        "venue": {
+            "name": "City Center",
+            "lat": 12.9788,
+            "lon": 77.5996
+        },
+        "impact_radius": 1000
+    },
+    "risk_analysis": {
+        "score": 0,
+        "level": "Low",
+        "affected_junctions": 0,
+        "critical_junctions": 0
+    },
+    "junctions": [],
+    "critical_zones": [],
+    "deployment": {
+        "officers": [],
+        "barricades": []
+    },
+    "infrastructure": {
+        "hospitals": [],
+        "schools": [],
+        "fire_stations": [],
+        "police_stations": []
+    },
+    "diversions": [],
+    "emergency_corridors": [],
+    "alerts": [],
+    "events": []
+}
